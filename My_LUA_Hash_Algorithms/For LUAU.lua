@@ -33,7 +33,11 @@ end
 local hash = function(str : string , length : number ) : string
 	assert(type(str)=="string","<HASH> Expected String in argument #1. Got "..type(str)..".")
 	assert(type(length)=="number" or length==nil,"<HASH> Expected Number in argument #2. Got "..type(length)..".")
-	local length = math.clamp(length or 25,5,1000)
+	local length = length or 15
+	if length<5 then length = 5
+	elseif length>100 then length = 100
+	end
+	length=math.floor(length)
 	local old_length = str:len()
 	local abytes = {str:byte(1,-1)}
 	local bbytes = {}
