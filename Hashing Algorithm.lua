@@ -8,7 +8,7 @@ local Hex_Table={
 }
 setmetatable(Hex_Table,{
 	__index = function(self,i)
-		if i > 10 then return rawget(self,i)else return i end
+		if i >= 10 then return rawget(self,i)else return i end
 	end,
 })
 local to_Hex = function(dec)
